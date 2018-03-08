@@ -37,14 +37,17 @@ public:
 	void resized() override;
 
 private:
+	void drawGrids(Graphics &g);
+	void drawLabels(Graphics &g);
+
+private:
 	Colour lineColour, gridColour, labelColour, backgroundColour;
 	String fontName;
 	vector<double> yAxisData, xAxisData, xGrid, xLabel, yGrid, yLabel;
 	bool isXAxisLog, isXLimitSet, isYLimitSet;
 	float lineThickness, gridOpacity, fontSize, maxViewY, minViewY, maxViewX, minViewX;
 
-	void drawGrids(Graphics &g);
-	void drawLabels(Graphics &g);
+
 };
 
 #endif  // DRAWARRAY_H_INCLUDED

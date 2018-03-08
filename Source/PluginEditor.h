@@ -33,20 +33,6 @@ public:
 	void buttonClicked(Button* button) override;
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
-    EqmatchingPlugInAudioProcessor& processor;
-	TextButton  eqMatchButton;
-	Label show, captureInputLabel, captureTargetLabel, clearInputLabel, clearTargetLabel, bypassButtonLabel, inputHeader, targetHeader, filterHeader;
-	ImageButton captureInputButton, captureTargetButton, clearInputButton, clearTargetButton, bypassButton;
-	String fontName;
-	bool isInputRecording, isTargetRecording, isMatching;
-	int sampleRate, boxX, boxY, boxWidth, boxHeight;
-	float minY, maxY, minX, maxX;
-	DrawArray drawLeftFreqResp, drawRightFreqResp;
-	Filter filter;
-
-
 	void createCaptureButton(ImageButton* button, Label* label);
 	void createClearButton(ImageButton* button, Label* label);
 	void changeCaptureButtonToStop(ImageButton* button, Label* label);
@@ -54,8 +40,19 @@ private:
 	void createHeaderLabel(Label* label, String headerName);
 	void hasSignal(ImageButton* button, Label* label, int bufferSize);
 	void bypassButtonChanged();
-	void matchEQ();
+	void matchEQ(); // Does the EQ Matching technique when the button is clicked
 
+private:
+    EqmatchingPlugInAudioProcessor& processor;
+	TextButton  eqMatchButton;
+	Label show, captureInputLabel, captureTargetLabel, clearInputLabel, clearTargetLabel, bypassButtonLabel, inputHeader, targetHeader, filterHeader;
+	ImageButton captureInputButton, captureTargetButton, clearInputButton, clearTargetButton, bypassButton;
+	String fontName;
+	DrawArray drawLeftFreqResp, drawRightFreqResp;
+	Filter filter;
+	bool isInputRecording, isTargetRecording, isMatching;
+	int sampleRate, boxX, boxY, boxWidth, boxHeight;
+	float minY, maxY, minX, maxX;
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EqmatchingPlugInAudioProcessorEditor)
 };
 
